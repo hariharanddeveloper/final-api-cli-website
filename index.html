@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>final-api-cli</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="icon" href="assets/images/favicon.ico" />
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <div class="navbar-container">
+            <a href="#" class="logo"><img src="assets/images/logo.png" alt="Final API CLI Logo" /></a>
+            <div class="nav-links-container">
+                <div><a href="#home">HOME</a></div>
+                <div><a href="#installation">INSTALLATION</a></div>
+                <div><a href="#commands">COMMANDS</a></div>
+                <div><a href="#links">LINKS</a></div>
+            </div>
+            <div class="hamburger-container">
+                <span class="hamburger-icon">&#9776;</span>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay-container" id="mobileMenuOverlay">
+            <div><a href="javascript:void(0)" class="close-btn-icon">&times;</a></div>
+            <div class="overlay-content">
+                <div><a href="#home">HOME</a></div>
+                <div><a href="#installation">INSTALLATION</a></div>
+                <div><a href="#commands">COMMANDS</a></div>
+                <div><a href="#links">LINKS</a></div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast">Copied successfully</div>
+
+        <!-- Home Section -->
+        <div id="home" class="home-container">
+            <div class="heading">Final API CLI</div>
+            <div class="sub-heading project-description">
+                The "final-api-cli" is a powerful command-line interface tool designed to simplify and accelerate the
+                development of Node.js REST APIs. With this CLI, you can automatically generate a fully structured,
+                best-practices-compliant REST API based on user inputs. The generated API comes pre-configured with
+                essential features such as routes, controllers, models, and Docker support, making it ideal for both
+                small-scale and enterprise-level applications.
+            </div>
+            <a href="#installation" class="primary-btn">Get Started</a>
+        </div>
+
+        <!-- Installation Section -->
+        <div id="installation" class="installation-container">
+            <div class="sub-heading">📦 Installation</div>
+            <br />
+            <div class="description-text">Install final-api-cli globally using npm:</div>
+            <br />
+            <div class="cmd-container">
+                $ npm install -g final-api-cli
+                <svg class="copy-icon" id="npm-install" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M16 1H4a2 2 0 00-2 2v14h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"
+                    />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Commands Section -->
+        <div id="commands" class="commands-container">
+            <div class="sub-heading">🛠️ Commands</div>
+            <div class="command-section">
+                <div class="sub-heading">Help</div>
+
+                <div>The help command is used to displays the list of available commands and their descriptions.</div>
+
+                <div>
+                    To execute help command run <span class="cmd-script-container">fac -h</span> or
+                    <span class="cmd-script-container">fac --help</span>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --help</p>
+                        <p>Usage: index [options]</p>
+                        <br />
+                        <p>Final API CLI for creating a Node.js REST API</p>
+                        <br />
+                        <p>Options:</p>
+                        <p>-v, --version output the version number</p>
+                        <p>-i, --init [project-name] initialize a new project</p>
+                        <p>-r, --route [route-name] create a new route</p>
+                        <p>-c, --controller [controller-name] create a new controller</p>
+                        <p>-m, --model [model-name] create a new model</p>
+                        <p>-e, --endpoint [endpoint-name] create a new endpoint</p>
+                        <p>-h, --help display help for command</p>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Version</div>
+
+                <div>The version command is used to displays the current version of the CLI.</div>
+
+                <div>
+                    To execute version command run <span class="cmd-script-container">fac -v</span> or
+                    <span class="cmd-script-container">fac --version</span>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --version</p>
+                        <p>1.0.0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Init</div>
+
+                <div>The init command is used to create a new API project with the given project-name.</div>
+
+                <div>
+                    To execute init command run <span class="cmd-script-container">fac -i [project-name]</span> or
+                    <span class="cmd-script-container">fac --init [project-name]</span>
+                </div>
+
+                <div>
+                    This command will prompt you to select the type of database to be used in the project. The available
+                    options are SQL and NoSQL. If you select SQL, you will be asked to choose a database dialect from
+                    the following options: MySQL, PostgreSQL, SQLite, Oracle, SQLServer, or MariaDB. For the NoSQL
+                    database type, no further selection is required. After the database type and dialect (if applicable)
+                    are selected, the command will automatically create a new project directory with the specified
+                    project name, download the appropriate project template based on the database selection, and install
+                    the necessary packages.
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --init demo</p>
+                        <p>
+                            <span class="success-message">?</span> Choose your database type:
+                            <span class="info-message">SQL</span>
+                        </p>
+                        <p>
+                            <span class="success-message">?</span> Choose your database:
+                            <span class="info-message">MySQL</span>
+                        </p>
+                        <p><span class="success-message">√</span> Template downloaded successfully.</p>
+                        <p><span class="success-message">√</span> Template extracted successfully.</p>
+                        <p><span class="success-message">√</span> Npm packages installed successfully.</p>
+                        <p><span class="success-message">Project setup complete!</span></p>
+                    </div>
+                </div>
+
+                <br />
+
+                <div>
+                    In this example, the SQL database type is selected, and MySQL is chosen as the database dialect,
+                    with the project name set to demo. Below is the resulting project folder structure. You can explore
+                    the files within the directories by clicking on them. The project structure remains consistent for
+                    both SQL and NoSQL options.
+                </div>
+
+                <div class="folder-structure-container">
+                    <ul class="tree-view">
+                        <li class="folder open">
+                            demo
+                            <ul>
+                                <li class="folder">
+                                    __test__
+                                    <ul>
+                                        <li class="folder">
+                                            e2e
+                                            <ul>
+                                                <li class="file">e2e.test.js</li>
+                                            </ul>
+                                        </li>
+                                        <li class="folder">
+                                            integration
+                                            <ul>
+                                                <li class="file">integration.test.js</li>
+                                            </ul>
+                                        </li>
+                                        <li class="folder">
+                                            unit
+                                            <ul>
+                                                <li class="file">file-download.test.js</li>
+                                                <li class="file">file-upload.test.js</li>
+                                                <li class="file">user.test.js</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    configs
+                                    <ul>
+                                        <li class="file">database.config.js</li>
+                                        <li class="file">index.js</li>
+                                        <li class="file">jest.config.js</li>
+                                        <li class="file">pm2.config.js</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    controllers
+                                    <ul>
+                                        <li class="file">health.controller.js</li>
+                                        <li class="file">index.js</li>
+                                        <li class="file">user.controller.js</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    downloads
+                                    <ul>
+                                        <li class="file">sample.download.txt</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    middlewares
+                                    <ul>
+                                        <li class="file">auth.middleware.js</li>
+                                        <li class="file">cors.middleware.js</li>
+                                        <li class="file">error.middleware.js</li>
+                                        <li class="file">file-upload.middleware.js</li>
+                                        <li class="file">index.js</li>
+                                        <li class="file">preflight.middleware.js</li>
+                                        <li class="file">rate-limit.middleware.js</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    models
+                                    <ul>
+                                        <li class="file">index.js</li>
+                                        <li class="file">user.model.js</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    routes
+                                    <ul>
+                                        <li class="file">health.route.js</li>
+                                        <li class="file">index.js</li>
+                                        <li class="file">user.route.js</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    utils
+                                    <ul>
+                                        <li class="file">index.js</li>
+                                        <li class="file">send-response.util.js</li>
+                                        <li class="file">status-codes.util.js</li>
+                                    </ul>
+                                </li>
+                                <li class="file">.dockerignore</li>
+                                <li class="file">.env.example</li>
+                                <li class="file">.gitignore</li>
+                                <li class="file">Dockerfile</li>
+                                <li class="file">package-lock.json</li>
+                                <li class="file">package.json</li>
+                                <li class="file">README.md</li>
+                                <li class="file">server.js</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="summary">
+                        <p>Total Directories: 11</p>
+                        <p>Total Files: 36</p>
+                    </div>
+                </div>
+
+                <br />
+
+                <div>
+                    The REST API generated by Final API CLI is designed to be robust, scalable, and easy to maintain. It
+                    follows best practices for RESTful architecture, provides extensive support for Docker
+                    containerization, environment variable configuration, process management, and comprehensive testing,
+                    including unit, integration, and end-to-end tests. Below is a breakdown of some key endpoints
+                    provided by the generated API:
+                </div>
+
+                <div class="mini-heading">Health Check</div>
+                <div class="endpoint-description-container get-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">GET</div>
+                        <div class="http-endpoint-name">/api/health</div>
+                        <div class="http-endpoint-description">Check the health status of the API.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">none</div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"uptime"</span> :
+                                    <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"memoryUsage"</span> :
+                                    <span class="semi-bold-text">object,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"timestamp"</span> :
+                                    <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-3">},</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-heading">File Operations</div>
+                <div class="endpoint-description-container post-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">POST</div>
+                        <div class="http-endpoint-name">/api/upload</div>
+                        <div class="http-endpoint-description">Upload a file to the server.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"file"</span> :
+                                    <span class="semi-bold-text">form-data,</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> : { }</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-description-container get-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">GET</div>
+                        <div class="http-endpoint-name">/api/download/:file-name</div>
+                        <div class="http-endpoint-description">Download a file from the server.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">none</div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">file data</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-heading">User Management</div>
+                <div class="endpoint-description-container get-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">GET</div>
+                        <div class="http-endpoint-name">/api/users</div>
+                        <div class="http-endpoint-description">Retrieve a list of all users.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">none</div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-2">[</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"id"</span> : <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"createdAt"</span> :
+                                    <span class="semi-bold-text">datetime,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"updatedAt"</span> :
+                                    <span class="semi-bold-text">datetime</span>
+                                </div>
+                                <div class="tab-index-3">}</div>
+                                <div class="tab-index-2">],</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-description-container get-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">GET</div>
+                        <div class="http-endpoint-name">/api/users/:id</div>
+                        <div class="http-endpoint-description">Retrieve details of a specific user.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">none</div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"id"</span> : <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"createdAt"</span> :
+                                    <span class="semi-bold-text">datetime,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"updatedAt"</span> :
+                                    <span class="semi-bold-text">datetime</span>
+                                </div>
+                                <div class="tab-index-3">},</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-description-container post-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">POST</div>
+                        <div class="http-endpoint-name">/api/users</div>
+                        <div class="http-endpoint-description">Create a new user.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>201</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"id"</span> : <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"createdAt"</span> :
+                                    <span class="semi-bold-text">datetime,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"updatedAt"</span> :
+                                    <span class="semi-bold-text">datetime</span>
+                                </div>
+                                <div class="tab-index-3">},</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-description-container put-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">PUT</div>
+                        <div class="http-endpoint-name">/api/users/:id</div>
+                        <div class="http-endpoint-description">Update an existing user's information.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"id"</span> : <span class="semi-bold-text">number,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"name"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"email"</span> : <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"password"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"createdAt"</span> :
+                                    <span class="semi-bold-text">datetime,</span>
+                                </div>
+                                <div class="tab-index-4">
+                                    <span class="bold-text">"updatedAt"</span> :
+                                    <span class="semi-bold-text">datetime</span>
+                                </div>
+                                <div class="tab-index-3">},</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-description-container delete-method swigger">
+                    <div class="endpoint-summary">
+                        <div class="http-method">DELETE</div>
+                        <div class="http-endpoint-name">/api/users/:id</div>
+                        <div class="http-endpoint-description">Remove a user from the system.</div>
+                    </div>
+                    <div class="endpoint-details">
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Status code</div>
+                            <div>200</div>
+                        </div>
+                        <div class="request-body">
+                            <div class="endpoint-details-title">Request body</div>
+                            <div class="json-object">none</div>
+                        </div>
+                        <div class="response-body">
+                            <div class="endpoint-details-title">Response data</div>
+                            <div class="json-object">
+                                <div class="tab-index-0">{</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"status"</span> :
+                                    <span class="semi-bold-text">string,</span>
+                                </div>
+                                <div class="tab-index-1"><span class="bold-text">"data"</span> :</div>
+                                <div class="tab-index-3">{</div>
+                                <div class="tab-index-3">},</div>
+                                <div class="tab-index-1">
+                                    <span class="bold-text">"messages"</span> :
+                                    <span class="semi-bold-text">string[]</span>
+                                </div>
+                                <div class="tab-index-0">}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Route</div>
+
+                <div>The route command is used to generate a new route file with the given route-name.</div>
+
+                <div>
+                    To execute route command run <span class="cmd-script-container">fac -r [route-name]</span> or
+                    <span class="cmd-script-container">fac --route [route-name]</span>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --route demo</p>
+                        <p class="success-message">CREATED : 'demo.route.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Model</div>
+
+                <div>The model command is used to generate a new model file with the given model-name.</div>
+
+                <div>
+                    To execute model command run <span class="cmd-script-container">fac -m [model-name]</span> or
+                    <span class="cmd-script-container">fac --model [model-name]</span>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --model demo</p>
+                        <p class="success-message">CREATED : 'demo.model.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Controller</div>
+
+                <div>
+                    The controller command is used to generate a new controller file with the given controller-name.
+                </div>
+
+                <div>
+                    To execute controller command run
+                    <span class="cmd-script-container">fac -c [controller-name]</span> or
+                    <span class="cmd-script-container">fac --controller [controller-name]</span>
+                </div>
+
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --controller demo</p>
+                        <p class="success-message">CREATED : 'demo.controller.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="command-section">
+                <div class="sub-heading">Endpoint</div>
+                <div>Generates a new API endpoint with route, model, and controller.</div>
+
+                <div>
+                    The endpoint command is used to create a new API endpoint this will generate new route, model and
+                    controller file with the given endpoint-name.
+                </div>
+
+                <div>
+                    To execute endpoint command run
+                    <span class="cmd-script-container">fac -e [endpoint-name]</span> or
+                    <span class="cmd-script-container">fac --endpoint [endpoint-name]</span>
+                </div>
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="success-message">user@machine: </span>~ $ fac --endpoint demo</p>
+                        <p class="success-message">CREATED : 'demo.route.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                        <p class="success-message">CREATED : 'demo.model.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                        <p class="success-message">CREATED : 'demo.controller.js' created successfully.</p>
+                        <p class="warning-message">UPDATED : 'index.js' updated successfully.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Section -->
+        <div id="links" class="links-container">
+            <div class="sub-heading">🔗 Links</div>
+            <div class="links-section">
+                <a
+                    href="https://github.com/hariharanddeveloper/final-api-cli"
+                    target="_blank"
+                    class="link-item secondary-btn"
+                >
+                    📝 View Source
+                </a>
+                <a
+                    href="https://github.com/hariharanddeveloper/final-api-cli/issues"
+                    target="_blank"
+                    class="link-item secondary-btn"
+                >
+                    🐞 Report Bug
+                </a>
+                <a
+                    href="https://github.com/hariharanddeveloper/final-api-cli/issues"
+                    target="_blank"
+                    class="link-item secondary-btn"
+                >
+                    💡 Request Feature
+                </a>
+                <a href="https://www.npmjs.com/package/final-api-cli" target="_blank" class="link-item secondary-btn">
+                    📦 View on npm
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer-container">Made with ❤️ by Hariharan Duraisamy</div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
